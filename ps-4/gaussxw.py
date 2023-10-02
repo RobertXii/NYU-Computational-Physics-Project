@@ -23,7 +23,3 @@ def gaussxw(N):
     w = 2*(N+1)*(N+1)/(N*N*(1-x*x)*dp*dp)
 
     return x,w
-
-def gaussxwab(N,a,b):
-    x,w = gaussxw(N)
-    return 0.5*(b-a)*x+0.5*(b+a),0.5*(b-a)*w

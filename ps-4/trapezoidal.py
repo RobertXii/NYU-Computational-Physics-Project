@@ -36,5 +36,5 @@ error_intergral = abs(s1-definite_integral)
 
 print(f"20 steps trapezoidal: {s1:.4f}")
 print(f"10 steps trapezoidal: {s2:.4f}")
-print(f"error between 20 steps trapezoidal versus actual difference: {error_theroy:.4f}")
+print(f"error between 20 steps trapezoidal: {error_theroy:.4f}")
 print(f"error between 20 steps trapezoidal versus actual difference: {error_intergral:.4f}")
