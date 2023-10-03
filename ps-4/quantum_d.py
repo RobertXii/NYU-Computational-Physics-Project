@@ -18,20 +18,16 @@ def quantum_well(n, x):
 N = 100
 # Calculate the sample points and weights, then map them # to the required integration domain
 #x, w = np.polynomial.hermite.hermgauss(N)
-x, w = scipy.special.roots_hermite(N)
-boundary = 10
-a = -boundary
-b = boundary
-xp = 0.5 * (b - a) * x + 0.5 * (b + a)
-wp = 0.5 * (b - a) * w
+x, w = scipy.special.roots_hermite(N, mu = False)
+
 y = []
 #print(xp)
 
-for i in xp:
-    yp = i**2 * quantum_well(5,i)**2
+for i in x:
+    yp = i**2 * quantum_well(5,i)**2 / np.exp(-i**2)
     y.append(yp)
 
-s = sum(y * wp)
+s = sum(y * w)
 
 print(np.sqrt(s))
 
