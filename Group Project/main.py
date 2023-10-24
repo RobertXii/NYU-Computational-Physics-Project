@@ -3,12 +3,24 @@ import numpy as np
 from cells import Cell
 
 
-nt = 10
+def plot_grid(grid_to_plot, nt_cur, nx_cur):
+    global jj
+    rho_map_cur = np.zeros((nt_cur, nx_cur))
+    for jj in range(nt_cur):
+        for ii in range(0, nx_cur):
+            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0]
+        plt.plot(rho_map_cur[jj])
+    print(rho_map_cur)
+    plt.show()
+
+
+nt = 100
 nx = 50
 v0 = 0.01
 rows = nt
 cols = nx
 grid_cur = []
+
 
 # initialize
 for j in range(nt):
@@ -22,6 +34,7 @@ for j in range(nt):
             rho_R = 0.1
             P_R = 0.1
             grid_cur[j].append(Cell(rho_R, v0, P_R))
+# plot_grid(grid_cur, nt, nx)
 
 
 def find_p(cur_cell):
@@ -85,24 +98,13 @@ for t in range(nt-1):
         right_cell_later = grid_cur[t+1][i + 1]
         current_cell_later = grid_cur[t+1][i]
         delta_x = 1
-        delta_t = 0.1
+        delta_t = 0.01
 
         current_cell_later.U = find_u_later(current_cell, left_cell, right_cell, delta_x, delta_t)
         current_cell_later.T = find_f_later(current_cell)
 
         # print("alpha plus:", cell.alpha_plus)
         # print("alpha minus:", cell.alpha_minus)
-
-
-def plot_grid(grid_to_plot, nt_cur, nx_cur):
-    global jj
-    rho_map_cur = np.zeros((nt_cur, nx_cur))
-    for jj in range(nt_cur):
-        for ii in range(nx_cur):
-            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0]
-        plt.plot(rho_map_cur[jj])
-    plt.show()
-    print(rho_map_cur)
 
 plot_grid(grid_cur, nt, nx)
 # plt.show()
