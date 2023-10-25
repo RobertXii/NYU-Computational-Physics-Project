@@ -14,7 +14,7 @@ def plot_grid(grid_to_plot, nt_cur, nx_cur):
     plt.show()
 
 
-nt = 100
+nt = 300
 nx = 50
 v0 = 0.01
 rows = nt
