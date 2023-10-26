@@ -9,14 +9,39 @@ def plot_grid(grid_to_plot, nt_cur, nx_cur): # this function plot given variable
     for jj in range(nt_cur):
         for ii in range(0, nx_cur):
             rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0] # change which variable you want to see, U[0] is rho
-        plt.plot(rho_map_cur[jj])
+        if jj % 10 == 0:
+            plt.plot(rho_map_cur[jj])
     print(rho_map_cur)
     plt.show()
+    return rho_map_cur
 
+
+def plot_3d(data):
+    position = np.arange(data.shape[1])
+    time = np.arange(data.shape[0])
+
+    X, Y = np.meshgrid(position, time)
+
+    # Create a 3D plot
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Plot the surface
+    ax.plot_surface(X, Y, data, cmap='viridis')
+
+    # Label axes
+    ax.set_xlabel('Position')
+    ax.set_ylabel('Time')
+    ax.set_zlabel('Density')
+
+    # Show the plot
+    plt.show()
 
 nt = 100 # total time steps
-nx = 50 # total space steps
+nx = 40 # total space steps
 v0 = 0.01 # initial velocity
+delta_x = 1
+delta_t = 0.3
 rows = nt
 cols = nx
 grid_cur = []
@@ -75,22 +100,22 @@ def find_f_half(cur_cell, r_cell): # find F_HLL given current and right cell
 
 # find U value at next time step given left, right, current cell at current time
 def find_u_later(cur_cell, l_cell, r_cell, dx, dt):
-    U_temp = [0, 0, 0]
+    u_temp = [0, 0, 0]
     for ii in range(3):
         du = -(find_f_half(cur_cell, r_cell)[ii] - find_f_half(l_cell, cur_cell)[ii]) / dx
-        U_temp[ii] = cur_cell.U[ii] + dt * du
-    return U_temp
+        u_temp[ii] = cur_cell.U[ii] + dt * du
+    return u_temp
 
 
 # find F value at next time step given U of current cell at next time step
 def find_f_later(cur_cell_later):
-    F_temp = [0, 0, 0]
+    f_temp = [0, 0, 0]
     p = find_p(cur_cell_later)
-    F_temp[0] = cur_cell_later.U[1]
-    F_temp[1] = cur_cell_later.U[1] ** 2 / cur_cell_later.U[0] + p
-    F_temp[2] = (cur_cell_later.U[2] + p) * cur_cell_later.U[1] / cur_cell_later.U[0]
+    f_temp[0] = cur_cell_later.U[1]
+    f_temp[1] = cur_cell_later.U[1] ** 2 / cur_cell_later.U[0] + p
+    f_temp[2] = (cur_cell_later.U[2] + p) * cur_cell_later.U[1] / cur_cell_later.U[0]
     # print(P)
-    return F_temp
+    return f_temp
 
 
 # loop all things together
@@ -101,12 +126,12 @@ for t in range(nt-1):
         right_cell = grid_cur[t][i+1]
         current_cell = grid_cur[t][i]
         current_cell_later = grid_cur[t+1][i]
-        delta_x = 1
-        delta_t = 0.1
+
 
         current_cell_later.U = find_u_later(current_cell, left_cell, right_cell, delta_x, delta_t)
         current_cell_later.F = find_f_later(current_cell)
 
 
-plot_grid(grid_cur, nt, nx)
-# plt.show()
+rho_map_cur = plot_grid(grid_cur, nt, nx)
+# plot_3d(rho_map_cur)
+# plt.show(rho_map_cur)

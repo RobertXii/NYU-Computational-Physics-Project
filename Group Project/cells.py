@@ -28,7 +28,7 @@ class Cell:
         self.F = [rho*v,
                   rho*(v**2.0+(self.gamma - 1)*e),
                   rho*v*(1/2*v**2+self.gamma*e)]
-        print(self.F)
+        # print(self.F)
         self.lambda_plus = v + sqrt((self.gamma*(self.gamma-1)*self.rho*self.e)/self.rho)
         self.lambda_minus = v - sqrt((self.gamma*(self.gamma-1)*self.rho*self.e)/self.rho)
         # print("v:", v)
