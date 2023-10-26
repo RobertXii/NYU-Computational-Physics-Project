@@ -3,26 +3,26 @@ import numpy as np
 from cells import Cell
 
 
-def plot_grid(grid_to_plot, nt_cur, nx_cur):
+def plot_grid(grid_to_plot, nt_cur, nx_cur): # this function plot given variable of every cell element in the matrix
     global jj
     rho_map_cur = np.zeros((nt_cur, nx_cur))
     for jj in range(nt_cur):
         for ii in range(0, nx_cur):
-            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0]
+            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0] # change which variable you want to see, U[0] is rho
         plt.plot(rho_map_cur[jj])
     print(rho_map_cur)
     plt.show()
 
 
-nt = 300
-nx = 50
-v0 = 0.01
+nt = 100 # total time steps
+nx = 50 # total space steps
+v0 = 0.01 # initial velocity
 rows = nt
 cols = nx
 grid_cur = []
 
 
-# initialize
+# initialization, matrix nt*nx, all element are Cell
 for j in range(nt):
     grid_cur.append([])
     for i in range(nx):
@@ -37,13 +37,13 @@ for j in range(nt):
 # plot_grid(grid_cur, nt, nx)
 
 
-def find_p(cur_cell):
+def find_p(cur_cell): # find pressure given U
     cur_cell.P = (cur_cell.gamma-1)*cur_cell.U[0]*(cur_cell.U[2]/cur_cell.U[0]-0.5*(cur_cell.U[1]/cur_cell.U[0])**2)
     # print(cur_cell.P)
     return cur_cell.P
 
 
-def find_lambda(cur_cell):
+def find_lambda(cur_cell): # find lambda given U
     p = find_p(cur_cell)
     v = cur_cell.U[1] / cur_cell.U[0]
     cur_cell.lambda_plus = v + (cur_cell.gamma*p/cur_cell.U[0])**0.5
@@ -53,7 +53,7 @@ def find_lambda(cur_cell):
     return cur_cell.lambda_plus, cur_cell.lambda_minus
 
 
-def find_f_half(cur_cell, r_cell):
+def find_f_half(cur_cell, r_cell): # find F_HLL given current and right cell
     lambda_plus, lambda_minus = find_lambda(cur_cell)
     # print(lambda_plus,lambda_minus)
     for ii in range(3):
@@ -73,38 +73,40 @@ def find_f_half(cur_cell, r_cell):
     return cur_cell.F_half
 
 
+# find U value at next time step given left, right, current cell at current time
 def find_u_later(cur_cell, l_cell, r_cell, dx, dt):
+    U_temp = [0, 0, 0]
     for ii in range(3):
         du = -(find_f_half(cur_cell, r_cell)[ii] - find_f_half(l_cell, cur_cell)[ii]) / dx
-        current_cell_later.U[ii] = cur_cell.U[ii] + dt * du
-    return current_cell_later.U
+        U_temp[ii] = cur_cell.U[ii] + dt * du
+    return U_temp
 
 
+# find F value at next time step given U of current cell at next time step
 def find_f_later(cur_cell_later):
+    F_temp = [0, 0, 0]
     p = find_p(cur_cell_later)
-    cur_cell_later.F[0] = cur_cell_later.U[1]
-    cur_cell_later.F[1] = cur_cell_later.U[1] ** 2 / cur_cell_later.U[0] + p
-    cur_cell_later.F[2] = (cur_cell_later.U[2] + p) * cur_cell_later.U[1] / cur_cell_later.U[0]
+    F_temp[0] = cur_cell_later.U[1]
+    F_temp[1] = cur_cell_later.U[1] ** 2 / cur_cell_later.U[0] + p
+    F_temp[2] = (cur_cell_later.U[2] + p) * cur_cell_later.U[1] / cur_cell_later.U[0]
     # print(P)
-    return cur_cell_later.F
+    return F_temp
 
 
+# loop all things together
 for t in range(nt-1):
     for i, cell in enumerate(grid_cur[t][1:nx-1]):
+        i += 1
         left_cell = grid_cur[t][i-1]
         right_cell = grid_cur[t][i+1]
         current_cell = grid_cur[t][i]
-        left_cell_later = grid_cur[t+1][i - 1]
-        right_cell_later = grid_cur[t+1][i + 1]
         current_cell_later = grid_cur[t+1][i]
         delta_x = 1
-        delta_t = 0.01
+        delta_t = 0.1
 
         current_cell_later.U = find_u_later(current_cell, left_cell, right_cell, delta_x, delta_t)
-        current_cell_later.T = find_f_later(current_cell)
+        current_cell_later.F = find_f_later(current_cell)
 
-        # print("alpha plus:", cell.alpha_plus)
-        # print("alpha minus:", cell.alpha_minus)
 
 plot_grid(grid_cur, nt, nx)
 # plt.show()
