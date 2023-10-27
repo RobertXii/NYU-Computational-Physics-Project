@@ -8,7 +8,7 @@ def plot_grid(grid_to_plot, nt_cur, nx_cur): # this function plot given variable
     rho_map_cur = np.zeros((nt_cur, nx_cur))
     for jj in range(nt_cur):
         for ii in range(0, nx_cur):
-            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].U[0] # change which variable you want to see, U[0] is rho
+            rho_map_cur[jj][ii] = grid_to_plot[jj][ii].P  # change which variable you want to see, U[0] is rho
         if jj % 10 == 0:
             plt.plot(rho_map_cur[jj])
     print(rho_map_cur)
