@@ -37,8 +37,8 @@ def plot_3d(data):
     # Show the plot
     plt.show()
 
-nt = 100 # total time steps
-nx = 40 # total space steps
+nt = 200 # total time steps
+nx = 100 # total space steps
 v0 = 0.01 # initial velocity
 delta_x = 1
 delta_t = 0.3
@@ -54,11 +54,11 @@ for j in range(nt):
         if i < nx / 2:
             rho_L = 1
             P_L = 0.8
-            grid_cur[j].append(Cell(rho_L, v0, P_L))
+            grid_cur[j].append(Cell(rho_L, v0*rho_L, P_L))
         else:
             rho_R = 0.1
             P_R = 0.1
-            grid_cur[j].append(Cell(rho_R, v0, P_R))
+            grid_cur[j].append(Cell(rho_R, v0*rho_R, P_R))
 # plot_grid(grid_cur, nt, nx)
 
 
