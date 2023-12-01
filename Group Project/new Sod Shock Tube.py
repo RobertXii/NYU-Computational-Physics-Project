@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #initialization
-nx = 100
+nx = 300
 # ny = 1
-nt = 200
-v0 = 0.01 # initial velocity
+nt = 1000
+v0 = 0 # initial velocity
 delta_x = 1
-delta_t = 0.3
+delta_t = 0.1
 gamma = 1.4
 U = np.zeros((nx, 3))
 F = np.zeros((nx, 3))
@@ -32,6 +32,7 @@ def find_f(U):
     F[:,0] = U[:,1]
     F[:,1] = U[:,1]*v + P
     F[:,2] = (U[:,0]*(e+0.5*v**2)+P)*v
+    # print(F)
     return F
 
 def find_f_half(U,F):
@@ -44,9 +45,9 @@ def find_f_half(U,F):
     alpha = np.zeros((nx,6)) #first three rows alpha plus, second three alpha minus
     for i in range(nx-1):
         for k in range(3):
-            alpha[i,k] = max(0, lambda_p[i]*U[i,k], lambda_p[i+1]*U[i+1,k])
-            alpha[i,k+3] = max(0, -lambda_m[i]*U[i,k], -lambda_m[i+1]*U[i+1,k])
-    # print(alpha)
+            alpha[i,k] = max(0, lambda_p[i], lambda_p[i+1])
+            alpha[i,k+3] = max(0, -lambda_m[i], -lambda_m[i+1])
+    # print(alpha.max())
     F_half = (alpha[:nx-1,0:3]*F[:nx-1,:]+alpha[:nx-1,3:6]*F[1:,:]-alpha[:nx-1,0:3]*\
               alpha[:nx-1,3:6]*(U[1:,:]-U[:nx-1,:]))/(alpha[:nx-1,0:3]+alpha[:nx-1,3:6])
     return F_half
@@ -61,8 +62,8 @@ def find_u_der(F_half, delta_x):
 def find_u(U, U_der,delta_t,ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
-    if ii % 10 == 0:
-        plt.plot(range(nx), U[:,1]/U[:,0])
+    if ii % 50 == 0:
+        plt.plot(range(nx), U[:,0])
     U[:,:]= U[:,:] + delta_t*U_der
     # print(U)
     return U

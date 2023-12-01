@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #initialization
-nx = 100
+nx = 300
 # ny = 1
-nt = 200
-v0 = 0.01 # initial velocity
+nt = 700
+v0 = 0.0 # initial velocity
 delta_x = 1
-delta_t = 0.3
+delta_t = 0.1
 gamma = 1.4
 theta = 1
 U = np.zeros((nx, 3))
@@ -67,8 +67,9 @@ def find_f_half(U,F):
     alpha = np.zeros((nx,6)) #first three rows alpha plus, second three alpha minus
     for i in range(nx-1):
         for k in range(3):
-            alpha[i,k] = max(0, lambda_p[i]*U[i,k], lambda_p[i+1]*U[i+1,k])
-            alpha[i,k+3] = max(0, -lambda_m[i]*U[i,k], -lambda_m[i+1]*U[i+1,k])
+            alpha[i,k] = max(0, lambda_p[i], lambda_p[i+1])
+            alpha[i,k+3] = max(0, -lambda_m[i], -lambda_m[i+1])
+            # print(alpha.max())
     # print(alpha)
     F_half = (alpha[:nx-1,0:3]*F[:nx-1,:]+alpha[:nx-1,3:6]*F[1:,:]-alpha[:nx-1,0:3]*\
               alpha[:nx-1,3:6]*(U[1:,:]-U[:nx-1,:]))/(alpha[:nx-1,0:3]+alpha[:nx-1,3:6])
@@ -99,7 +100,7 @@ for i in range(nt):
     F_half3 = find_f_half(U2,F)
     U_der3 = find_u_der(F_half3,delta_x)
     U = 1/3*U+2/3*U2+2/3*delta_t*U_der3
-    if i % 10 == 0:
+    if i % 50 == 0:
         plt.plot(range(nx), U[:,0])
 
 plt.title('position vs density')
