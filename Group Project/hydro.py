@@ -77,7 +77,8 @@ def find_u_der(F_half, delta_x):
 def find_u(U, U_der,delta_t,ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
-    np.save("data/array"+str(ii)+".npy", U[:,0])
+    if(ii % 50 == 0):
+        np.save("data/array"+str(ii)+".npy", U[:,0])
 
     U[:,:]= U[:,:] + delta_t*U_der
     # print(U)

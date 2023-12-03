@@ -9,8 +9,11 @@ hydro.initialize()
 for i in range(nt):
     hydro.evolve(i)
 
-for i in range(nt):
-    break
-    if i % 50 == 0:
-        plt.plot(range(hydro.nx), np.load('data/array'+str(i)+'.npy'))
+def plot():
+    for i in range(nt):
+        if i % 50 == 0:
+            plt.plot(range(hydro.nx), np.load('data/array'+str(i)+'.npy'))
+
+plot()
+
 plt.show()
