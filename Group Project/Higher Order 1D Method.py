@@ -2,20 +2,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #initialization
-nx = 300
+nx = 50
 # ny = 1
-nt = 700
+nt = 100
 v0 = 0.0 # initial velocity
 delta_x = 1
-delta_t = 0.1
+delta_t = 0.03
 gamma = 1.4
 theta = 1
 U = np.zeros((nx, 3))
 c_int = np.zeros((nx, 3))
-c_half = np.zeros((nx-2, 3))
+c_half_L = np.zeros((nx-2, 3))
+c_half_R = np.zeros((nx-2, 3))
 F = np.zeros((nx, 3))
 F_half = np.zeros((nx, 3))
 U_der = np.zeros((nx, 3))
+UL = np.zeros((nx-2, 3))
+UR = np.zeros((nx-2, 3))
+FL = np.zeros((nx-2, 3))
+FR = np.zeros((nx-2, 3))
 
 # initialization of U
 for i in range(nx):
@@ -29,78 +34,112 @@ for i in range(nx):
         U[i, 0:3] = np.array([rho_R, rho_R*v0, P_R])
 
 def sign(n):
-    return n/abs(n)
+    sign_matrix = np.zeros((nx - 2, 3))
+    non_zero_mask = n != 0
+    sign_matrix[non_zero_mask] = n[non_zero_mask] / abs(n[non_zero_mask])
+    # print(sign_matrix)
+    return sign_matrix
 
 def minmod(x,y,z):
-    return 0.25* abs(sign(x) + sign(y))(sign(x) + sign(z))* min(abs(x), abs(y), abs(z))
+    minmod_matrix = np.zeros((nx - 2, 3))
+    min_array = np.minimum(x, np.minimum(y, z))
+    xx = sign(x)
+    yy = sign(y)
+    zz = sign(z)
+    for i in range (nx-2):
+        for j in range (3):
+            minmod_matrix[i,j] = 0.25 * np.sqrt(np.square(xx[i,j] + yy[i,j]))*(xx[i,j] + zz[i,j]) * min_array[i,j]
+    return minmod_matrix
 
-# def differences(list):
-#     return np.subtract(list[:][1:], list[:][:-1])
+def differences(list):
+    return np.subtract(list[:][1:], list[:][:-1])
+
+def differences2(list):
+    return np.subtract(list[:][2:], list[:][:-2])
+
+def find_c_half(U):
+    c_int[:, 0] = U[:, 0]
+    c_int[:, 1] = (gamma-1)*U[:, 0]*(U[:, 2]/U[:, 0]-0.5*(U[:, 1]/U[:, 0])**2)
+    c_int[:, 2] = U[:, 1]/U[:, 0]
+    diff = differences(c_int)
+    diff2 = differences2(c_int)
+    c_half_L[:, :] = c_int[1:-1, :] + 0.5 * minmod(theta*diff[:-1,:], 0.5*diff2, theta*diff[:-1,:])
+    c_half_R[:, :] = c_int[2:, :] + 0.5 * minmod(theta*diff[1:,:], 0.5*diff2, theta*diff[1:,:])
+    return c_half_L, c_half_R
+
+def c_to_ULR_FLR(cL,cR):
+    UL[:, 0] = cL[:, 0]
+    UL[:, 1] = cL[:, 0] * cL[:, 2]
+    UL[:, 2] = cL[:, 1]/(gamma-1)+0.5*cL[:, 0]*cL[:, 2]**2
+    FL[:, 0] = UL[:, 1]
+    FL[:, 1] = cL[:, 0] * cL[:, 2] ** 2 + cL[:, 1]
+    FL[:, 2] = (UL[:, 2]+cL[:, 1])*cL[:, 2]
+    UR[:, 0] = cR[:, 0]
+    UR[:, 1] = cR[:, 0] * cR[:, 2]
+    UR[:, 2] = cR[:, 1]/(gamma-1)+0.5*cR[:, 0]*cR[:, 2]**2
+    FR[:, 0] = UR[:, 1]
+    FR[:, 1] = cR[:, 0] * cR[:, 2] ** 2 + cR[:, 1]
+    FR[:, 2] = (UR[:, 2]+cR[:, 1])*cR[:, 2]
+    return UL,UR,FL,FR
 #
-# def differences2(list):
-#     return np.subtract(list[:][2:], list[:][:-2])
-#
-# def find_c_half(U):
-#     c_int[:, 0] = U[:, 0]
-#     c_int[:, 1] = (gamma-1)*U[:, 0]*(U[:, 2]/U[:, 0]-0.5*(U[:, 1]/U[:, 0])**2)
-#     c_int[:, 2] = U[:, 1]/U[:, 0]
-#     diff = differences(c_int)
-#     diff2 = differences(c_int)
-#     c_half[:, :] = c_int[1:-1, :] + 0.5 * minmod(theta*diff[:-1,:], 0.5*diff2, theta*diff[:-1,:])
+# aa, bb = find_c_half(U)
+# c_to_ULR_FLR(aa, bb)
 
-def find_f(U):
-    v = U[:, 1] / U[:,  0]
-    P = (gamma-1)*U[:,0]*(U[:,2]/U[:,0]-0.5*v**2)
-    e = P/((gamma-1)*U[:,0])
-    F[:,0] = U[:,1]
-    F[:,1] = U[:,1]*v + P
-    F[:,2] = (U[:,0]*(e+0.5*v**2)+P)*v
-    return F
-
-def find_f_half(U,F):
-    v = U[:,1]/U[:,0]
-    P = (gamma-1)*U[:,0]*(U[:,2]/U[:,0]-0.5*v**2)
-    c_s = np.sqrt(P*gamma/U[:,0])
-    lambda_p = v + c_s
-    lambda_m = v - c_s
+def find_f_half(UL,UR,FL,FR):
+    vL = UL[:, 1] / UL[:, 0]
+    vR = UR[:, 1] / UR[:, 0]
+    PL = (gamma-1)*UL[:,0]*(UL[:,2]/UL[:,0]-0.5*vL**2)
+    PR = (gamma - 1) * UR[:, 0] * (UR[:, 2] / UR[:, 0] - 0.5 * vR ** 2)
+    c_s_L = np.sqrt(PL*gamma/UL[:,0])
+    c_s_R = np.sqrt(PR*gamma/UR[:,0])
+    lambda_p_L = vL + c_s_L
+    lambda_p_R = vR + c_s_R
+    lambda_m_L = vL - c_s_L
+    lambda_m_R = vR - c_s_R
     # print(lambda_m[1,0]*U[1,0,1])
-    alpha = np.zeros((nx,6)) #first three rows alpha plus, second three alpha minus
-    for i in range(nx-1):
+    alpha = np.zeros((nx-2,6)) #first three rows alpha plus, second three alpha minus
+    for i in range(nx-2):
         for k in range(3):
-            alpha[i,k] = max(0, lambda_p[i], lambda_p[i+1])
-            alpha[i,k+3] = max(0, -lambda_m[i], -lambda_m[i+1])
+            alpha[i,k] = max(0, lambda_p_L[i], lambda_p_R[i])
+            alpha[i,k+3] = max(0, -lambda_m_L[i], -lambda_m_R[i])
             # print(alpha.max())
-    # print(alpha)
-    F_half = (alpha[:nx-1,0:3]*F[:nx-1,:]+alpha[:nx-1,3:6]*F[1:,:]-alpha[:nx-1,0:3]*\
-              alpha[:nx-1,3:6]*(U[1:,:]-U[:nx-1,:]))/(alpha[:nx-1,0:3]+alpha[:nx-1,3:6])
+    F_half = (alpha[:,0:3]*FL[:,:]+alpha[:,3:6]*FR[:,:]-alpha[:,0:3]*\
+              alpha[:,3:6]*(UR[:,:]-UL[:,:]))/(alpha[:,0:3]+alpha[:,3:6])
     return F_half
 
 def find_u_der(F_half, delta_x):
     U_der = -(F_half[1:,:]-F_half[:-1,:])/delta_x
     U_der = np.append(U_der,[np.array([0,0,0])], axis=0)
-    U_der = np.vstack([np.array([0,0,0]),U_der])
+    U_der = np.vstack([np.array([0,0,0]),U_der,np.array([0,0,0])])
     # print(U_der)
     return U_der
 
 def find_u(U, U_der,delta_t):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
-    U[:,:]= U[:,:] + delta_t*U_der
+    U = U + delta_t*U_der
     # print(U)
     return U
 
 for i in range(nt):
-    F = find_f(U)
-    F_half = find_f_half(U,F)
+    cL, cR = find_c_half(U)
+    UL, UR, FL, FR = c_to_ULR_FLR(cL,cR)
+    F_half = find_f_half(UL, UR, FL, FR)
     U_der = find_u_der(F_half,delta_x)
-    U1 = find_u(U,U_der,delta_t)
-    F_half2 = find_f_half(U1,F)
-    U_der2 = find_u_der(F_half2,delta_x)
-    U2 = 0.75*U+0.25*U1+0.25*delta_t*U_der2
-    F_half3 = find_f_half(U2,F)
+    U1 = find_u(U,U_der,delta_t/3)
+
+    cL, cR = find_c_half(U)
+    UL, UR, FL, FR = c_to_ULR_FLR(cL, cR)
+    F_half2 = find_f_half(UL, UR, FL, FR)
+    U_der2 = find_u_der(F_half2, delta_x)
+    U2 = 0.75*U+0.25*U1+0.25*delta_t/3*U_der2
+
+    cL, cR = find_c_half(U)
+    UL, UR, FL, FR = c_to_ULR_FLR(cL, cR)
+    F_half3 = find_f_half(UL, UR, FL, FR)
     U_der3 = find_u_der(F_half3,delta_x)
-    U = 1/3*U+2/3*U2+2/3*delta_t*U_der3
-    if i % 50 == 0:
+    U = 1/3*U+2/3*U2+2/3*delta_t/3*U_der3
+    if i % 1 == 0:
         plt.plot(range(nx), U[:,0])
 
 plt.title('position vs density')
