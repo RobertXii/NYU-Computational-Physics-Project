@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #initialization
-nx = 50
+nx = 10
 # ny = 1
-nt = 100
+nt = 5
 v0 = 0.0 # initial velocity
 delta_x = 1
 delta_t = 0.03
@@ -88,6 +88,7 @@ def c_to_ULR_FLR(cL,cR):
 def find_f_half(UL,UR,FL,FR):
     vL = UL[:, 1] / UL[:, 0]
     vR = UR[:, 1] / UR[:, 0]
+    print(vL)
     PL = (gamma-1)*UL[:,0]*(UL[:,2]/UL[:,0]-0.5*vL**2)
     PR = (gamma - 1) * UR[:, 0] * (UR[:, 2] / UR[:, 0] - 0.5 * vR ** 2)
     c_s_L = np.sqrt(PL*gamma/UL[:,0])
