@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #initialization
-nx = 10
+nx = 50
 # ny = 1
-nt = 5
+nt = 500
 v0 = 0.0 # initial velocity
 delta_x = 1
-delta_t = 0.03
+delta_t = 0.1
 gamma = 1.4
 theta = 1
 U = np.zeros((nx, 3))
@@ -63,8 +63,8 @@ def find_c_half(U):
     c_int[:, 2] = U[:, 1]/U[:, 0]
     diff = differences(c_int)
     diff2 = differences2(c_int)
-    c_half_L[:, :] = c_int[1:-1, :] + 0.5 * minmod(theta*diff[:-1,:], 0.5*diff2, theta*diff[:-1,:])
-    c_half_R[:, :] = c_int[2:, :] + 0.5 * minmod(theta*diff[1:,:], 0.5*diff2, theta*diff[1:,:])
+    c_half_L[:, :] = c_int[:-2, :] + 0.5 * minmod(theta*diff[:-1,:], 0.5*diff2, theta*diff[1:,:])
+    c_half_R[:, :] = c_int[1:-1, :] + 0.5 * minmod(theta*diff[:-1,:], 0.5*diff2, theta*diff[1:,:])
     return c_half_L, c_half_R
 
 def c_to_ULR_FLR(cL,cR):
@@ -88,7 +88,7 @@ def c_to_ULR_FLR(cL,cR):
 def find_f_half(UL,UR,FL,FR):
     vL = UL[:, 1] / UL[:, 0]
     vR = UR[:, 1] / UR[:, 0]
-    print(vL)
+    # print(vL)
     PL = (gamma-1)*UL[:,0]*(UL[:,2]/UL[:,0]-0.5*vL**2)
     PR = (gamma - 1) * UR[:, 0] * (UR[:, 2] / UR[:, 0] - 0.5 * vR ** 2)
     c_s_L = np.sqrt(PL*gamma/UL[:,0])
@@ -140,8 +140,9 @@ for i in range(nt):
     F_half3 = find_f_half(UL, UR, FL, FR)
     U_der3 = find_u_der(F_half3,delta_x)
     U = 1/3*U+2/3*U2+2/3*delta_t/3*U_der3
-    if i % 1 == 0:
-        plt.plot(range(nx), U[:,0])
+    if i % 50 == 0:
+        plt.plot(range(nx), U[:,1]/U[:,0]) #v vs position
+        # plt.plot(range(nx), U[:, 0]) # density vs postion
 
-plt.title('position vs density')
+plt.title('position vs velocity')
 plt.show()
