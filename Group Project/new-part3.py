@@ -2,7 +2,7 @@ import hydro3
 import numpy as np
 import matplotlib.pyplot as plt
 
-nt = 500
+nt = 300
 hydro3.initialize()
 
 for i in range(nt):

@@ -8,7 +8,7 @@ nx = n
 ny = n
 v_x0 = 0
 v_y0 = 0 # initial velocity
-delta_x = 0.5
+delta_x = 1
 delta_t = 0.1
 gamma = 1.4
 U = np.zeros((nx, ny, 4))
@@ -26,8 +26,8 @@ def initialize():
     ny = n
     v_x0 = 0
     v_y0 = 0 # initial velocity
-    delta_x = 0.5
-    delta_t = 0.1
+    delta_x = 1
+    delta_t = 0.03
     gamma = 1.4
     U = np.zeros((nx, ny, 4))
     G = np.zeros((nx, ny, 4)) ## G
@@ -38,14 +38,15 @@ def initialize():
 
     # initialization of U
     for i in range(nx):
-        if i < nx / 2:
-            rho_L = 0.5
-            P_L = 0.8
-            U[i,:, 0:4] = np.array([rho_L, rho_L*v_x0, rho_L*v_y0, P_L])
-        else:
-            rho_R = 0.05
-            P_R = 0.1
-            U[i,:, 0:4] = np.array([rho_R, rho_R*v_x0,rho_R*v_y0, P_R])
+        for j in range(ny):
+            if i < nx / 2 and j < ny / 2:
+                rho_L = 0.5
+                P_L = 0.8
+                U[i,j, 0:4] = np.array([rho_L, rho_L*v_x0, rho_L*v_y0, P_L])
+            else:
+                rho_R = 0.05
+                P_R = 0.1
+                U[i,j, 0:4] = np.array([rho_R, rho_R*v_x0,rho_R*v_y0, P_R])
     # print(U)
 
 def find_FG(U):      ## Find f_U and G_U
@@ -95,7 +96,7 @@ def find_f_half(U,F):
 def find_u_der(F_half, G_half, delta_x):
     global n, nx, v_x0, v_y0, delta_t, gamma, G, F, U_der
 
-    U_der = -(F_half[1:,1:-1,:] - F_half[:-1,1:-1, :])/delta_x - (G_half[1:-1,:-1, :]-G_half[1:-1,:-1,:])/delta_x
+    U_der = -(F_half[1:,1:-1,:] - F_half[:-1,1:-1, :])/delta_x - (G_half[1:-1, 1:, :]-G_half[1:-1,:-1,:])/delta_x
     # U_der = np.append(U_der,[np.array([0,0,0,0])], axis=0) #4 coloums
     # print(U_der)
     return U_der
@@ -135,6 +136,6 @@ def evolve(i):
     U_der = find_u_der(F_half,G_half,delta_x)
     U = find_u(U,U_der,delta_t,i)
 
-    if(i==499):
+    if(i==299):
         plt.show()
 
