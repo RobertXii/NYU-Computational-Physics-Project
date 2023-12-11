@@ -12,7 +12,11 @@ def plot():
     for i in range(nt):
         if i % 50 == 0:
             plt.plot(range(hydro2.nx), np.load('data-part2/array'+str(i)+'.npy'))
-            plt.title("Pressure Distribution")
+            plt.title("Density Distribution at t=")
+            # plt.xlabel('x-Position (arb. unit)')
+            # plt.ylabel('y-Position (arb. unit)')
+            # plt.zlabel('Density (arb. unit)')
+
     plt.show()
 
 # plot()

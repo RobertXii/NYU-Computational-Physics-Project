@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #default value initialization
-nx = 50
+nx = 300
 # ny = 1
 v0 = 0.0 # initial velocity
 delta_x = 1
@@ -25,7 +25,7 @@ FR = np.zeros((nx-2, 3))
 def initialize():
     global U, nx, v0, delta_t, delta_x, gamma, theta, c_half_L, c_half_R, c_int, F, F_half, U_der, UL, UR, FL, FR
     #initialization
-    nx = 50
+    nx = 300
     # ny = 1
     v0 = 0.0 # initial velocity
     delta_x = 1
@@ -145,7 +145,10 @@ def find_u(U, U_der,delta_t, ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
     if(ii % 50 == 0):
-        np.save("data-part2/array"+str(ii)+".npy", U[:,1]/U[:,0])
+        # np.save("data-part2/array"+str(ii)+".npy", U[:,1]/U[:,0])#velocity
+        np.save("data-part2/array"+str(ii)+".npy", U[:,0])#density
+        # np.save("data-part2/array"+str(ii)+".npy", U[:,0]*(U[:,2]/U[:,0]-0.5*(U[:,1]/U[:,0])**2)) # Pressure
+
     U = U + delta_t*U_der
     # print(U)
     return U
@@ -176,4 +179,3 @@ def evolve(i):
     # if i == 499:
     #     plt.show()
 
-plt.title('Position vs. Velocity')

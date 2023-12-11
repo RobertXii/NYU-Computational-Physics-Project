@@ -3,18 +3,37 @@
   <component name="ChangeListManager">
     <list default="true" id="060c463c-15c9-4adf-b4f6-44da0752e8af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/Density, t,x=100,40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/NEW Higher Order 1D Method.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/NEW Higher Order 1D Method.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/Pressure at n=300.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/Pressure at n=50 same init.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/Pressure at n=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array100.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array150.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array200.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array200.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array250.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array250.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array50.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array50.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz0.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz100.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz150.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz200.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz200.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz250.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz250.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz300.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz350.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz400.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz450.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz50.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz50.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/higher order 1d density vs position.png" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/higher order 1d density vs position.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/higher order 1d position vs velocity.png" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/higher order 1d position vs velocity.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/hydro.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/hydro2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/hydro3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/new Sod Shock Tube.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/new Sod Shock Tube.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group Project/new-part3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/new-part3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/pressure at n=300 same init.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/pressure, t,x = 100, 40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/velocity,t,x=100,40png.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +90,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="3rd_part_group_project" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="NEW Higher Order 1D Method" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys-ua210" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,7 +102,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Group Project/3rd_part_group_project.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Group Project/NEW Higher Order 1D Method.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -113,7 +132,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fourier trans" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="new Sod Shock Tube" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys-ua210" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -121,11 +140,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ps-8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Group Project" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ps-8/fourier trans.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Group Project/new Sod Shock Tube.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -158,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.new-part3" />
+        <item itemvalue="Python.NEW Higher Order 1D Method" />
+        <item itemvalue="Python.new Sod Shock Tube" />
         <item itemvalue="Python.3rd_part_group_project (1)" />
         <item itemvalue="Python.Schrodinger" />
-        <item itemvalue="Python.3rd_part_group_project" />
-        <item itemvalue="Python.fourier trans" />
       </list>
     </recent_temporary>
   </component>

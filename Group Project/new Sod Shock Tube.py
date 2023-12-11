@@ -13,6 +13,9 @@ def plot():
     for i in range(nt):
         if i % 50 == 0:
             plt.plot(range(hydro.nx), np.load('data/array'+str(i)+'.npy'))
+            plt.title("Pressure Distribution over time")
+            plt.xlabel('Position (arb. unit)')
+            plt.ylabel('Pressure (arb. unit)')
 
 plot()
 

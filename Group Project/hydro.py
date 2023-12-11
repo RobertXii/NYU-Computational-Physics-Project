@@ -78,7 +78,10 @@ def find_u(U, U_der,delta_t,ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
     if(ii % 50 == 0):
-        np.save("data/array"+str(ii)+".npy", U[:,0])
+        # np.save("data/array"+str(ii)+".npy", U[:,0])# density
+        # np.save("data/array"+str(ii)+".npy", U[:,1]/U[:,0]) #velocity
+        np.save("data/array"+str(ii)+".npy", U[:,0]*(U[:,2]/U[:,0]-0.5*(U[:,1]/U[:,0])**2)) # Pressure
+
 
     U[:,:]= U[:,:] + delta_t*U_der
     # print(U)
