@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="060c463c-15c9-4adf-b4f6-44da0752e8af" name="Changes" comment="" />
+    <list default="true" id="060c463c-15c9-4adf-b4f6-44da0752e8af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/NEW Higher Order 1D Method.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/NEW Higher Order 1D Method.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array100.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1000.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1000.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1050.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1050.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1100.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1150.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1200.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1200.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1250.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1250.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array1450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array1450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array150.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array200.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array200.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array250.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array250.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array50.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array50.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array500.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array500.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array550.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array550.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array600.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array600.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array650.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array650.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array700.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array700.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array750.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array750.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array800.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array800.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array850.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array850.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array900.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array900.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part2/array950.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part2/array950.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayx300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayx300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayx350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayx350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayx400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayx400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayx450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayx450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayy300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayy300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayy350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayy350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayy400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayy400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayy450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayy450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz100.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz150.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz200.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz200.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz250.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz250.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz300.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz300.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz350.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz350.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz400.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz400.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz450.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz450.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/data-part3/arrayz50.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/data-part3/arrayz50.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/higher order 1d density vs position.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/higher order 1d density vs pressure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/higher order 1d position vs velocity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/hydro.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/hydro2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/hydro3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/hydro3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group Project/new Sod Shock Tube.py" beforeDir="false" afterPath="$PROJECT_DIR$/Group Project/new Sod Shock Tube.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +94,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.new-part3">
+  <component name="RunManager" selected="Python.NEW Higher Order 1D Method">
     <configuration name="3rd_part_group_project (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys-ua210" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,8 +202,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.new-part3" />
         <item itemvalue="Python.NEW Higher Order 1D Method" />
+        <item itemvalue="Python.new-part3" />
         <item itemvalue="Python.new Sod Shock Tube" />
         <item itemvalue="Python.3rd_part_group_project (1)" />
         <item itemvalue="Python.Schrodinger" />

@@ -39,18 +39,18 @@ def initialize():
     # initialization of U
     for i in range(nx):
         for j in range(ny):
-            # if i < nx / 2 and j < ny / 1:
+            if i < nx / 2 and j < ny / 1:
             # if i + j < nx:
-            if (i-25)**2 + (j-25)**2 < 36:
-                rho_L = 0.5
+            # if (i-25)**2 + (j-25)**2 < 36:
+                rho_L = 1
                 P_L = 0.8
                 U[i,j, 0:4] = np.array([rho_L, rho_L*v_x0, rho_L*v_y0, P_L])
             else:
-                rho_R = 0.05
+                rho_R = 0.1
                 P_R = 0.1
                 U[i,j, 0:4] = np.array([rho_R, rho_R*v_x0,rho_R*v_y0, P_R])
     # print(U)
-
+2
 def find_FG(U):      ## Find f_U and G_U
     global n, nx, v_x0, v_y0, delta_x, delta_t, gamma, G, F, F_half, G_half, U_der
     v_x = U[:, :, 1] / U[:, :, 0]  ## v in x-direction
@@ -141,6 +141,13 @@ def evolve(i):
     F_half, G_half = find_f_half(U,F)
     U_der = find_u_der(F_half,G_half,delta_x)
     U = find_u(U,U_der,delta_t,i)
+    # vx = U[0, :, 1] / U[0, :, 0]
+    # vy = U[0, :, 2] / U[0, :, 0]
+    # P = U[0, :, 3]
+    # for j in range(ny):
+    #         rho = 0.01 + 0.008 * np.sin(0.02*i)
+    #         U[-5:, j, 0:4] = np.array([rho, rho * vx[j], rho * vy[j], P[j]])
+    #         U[:5, j, 0:4] = np.array([rho, rho * vx[j], rho * vy[j], P[j]])
 
     if(i==299):
         plt.show()

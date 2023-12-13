@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #default value initialization
-nx = 300
+nx = 50
 # ny = 1
 v0 = 0.0 # initial velocity
 delta_x = 1
@@ -25,7 +25,7 @@ FR = np.zeros((nx-2, 3))
 def initialize():
     global U, nx, v0, delta_t, delta_x, gamma, theta, c_half_L, c_half_R, c_int, F, F_half, U_der, UL, UR, FL, FR
     #initialization
-    nx = 300
+    nx = 50
     # ny = 1
     v0 = 0.0 # initial velocity
     delta_x = 1
@@ -145,8 +145,8 @@ def find_u(U, U_der,delta_t, ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
     if(ii % 50 == 0):
-        # np.save("data-part2/array"+str(ii)+".npy", U[:,1]/U[:,0])#velocity
-        np.save("data-part2/array"+str(ii)+".npy", U[:,0])#density
+        np.save("data-part2/array"+str(ii)+".npy", U[:,1]/U[:,0])#velocity
+        # np.save("data-part2/array"+str(ii)+".npy", U[:,0])#density
         # np.save("data-part2/array"+str(ii)+".npy", U[:,0]*(U[:,2]/U[:,0]-0.5*(U[:,1]/U[:,0])**2)) # Pressure
 
     U = U + delta_t*U_der
@@ -161,19 +161,19 @@ def evolve(i):
     UL, UR, FL, FR = c_to_ULR_FLR(cL,cR)
     F_half = find_f_half(UL, UR, FL, FR)
     U_der = find_u_der(F_half,delta_x)
-    U1 = find_u(U,U_der,delta_t/3, ii=i)
+    U1 = find_u(U,U_der,delta_t, ii=i)
 
     cL, cR = find_c_half(U)
     UL, UR, FL, FR = c_to_ULR_FLR(cL, cR)
     F_half2 = find_f_half(UL, UR, FL, FR)
     U_der2 = find_u_der(F_half2, delta_x)
-    U2 = 0.75*U+0.25*U1+0.25*delta_t/3*U_der2
+    U2 = 0.75*U+0.25*U1+0.25*delta_t*U_der2
 
     cL, cR = find_c_half(U)
     UL, UR, FL, FR = c_to_ULR_FLR(cL, cR)
     F_half3 = find_f_half(UL, UR, FL, FR)
     U_der3 = find_u_der(F_half3,delta_x)
-    U = 1/3*U+2/3*U2+2/3*delta_t/3*U_der3
+    U = 1/3*U+2/3*U2+2/3*delta_t*U_der3
     # if i % 50 == 0:
     #     plt.plot(range(nx), U[:,1]/U[:,0])
     # if i == 499:
