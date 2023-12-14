@@ -39,9 +39,9 @@ def initialize():
     # initialization of U
     for i in range(nx):
         for j in range(ny):
-            if i < nx / 2 and j < ny / 1:
+            # if i < nx / 2 and j < ny / 1:
             # if i + j < nx:
-            # if (i-25)**2 + (j-25)**2 < 36:
+            if (i-25)**2 + (j-25)**2 < 100:
                 rho_L = 1
                 P_L = 0.8
                 U[i,j, 0:4] = np.array([rho_L, rho_L*v_x0, rho_L*v_y0, P_L])
@@ -110,12 +110,12 @@ def find_u(U, U_der,delta_t,ii):
     # print(U)
     # U_histor[i] = U[:nx-2,:,:]
     U[1:-1, 1:-1, :] = U[1:-1, 1:-1, :] + delta_t * U_der
-    if ii % 50 == 0:
+    if ii % 25 == 0:
         x_values, y_values = np.meshgrid(np.arange(nx), np.arange(ny))
         z_values = U[:, :, 0]  # rho
         # z_values = U[:, :, 1]/U[:, :, 0]  # x-velocity
         # z_values = U[:, :, 2]/U[:, :, 0]  # y-velocity
-        # z_values = np.sqrt((U[:, :, 2] / U[:, :, 0])**2 + (U[:, :, 1]/U[:, :, 0])**2) #velocity magnitude
+        z_values = np.sqrt((U[:, :, 2] / U[:, :, 0])**2 + (U[:, :, 1]/U[:, :, 0])**2) #velocity magnitude
         # z_values = F[:, :, 1]-U[:, :, 1]**2/U[:, :, 0]  # Pressure
         np.save("data-part3/arrayx"+str(ii)+".npy", x_values)
         np.save("data-part3/arrayy"+str(ii)+".npy", y_values)
@@ -145,7 +145,7 @@ def evolve(i):
     # vy = U[0, :, 2] / U[0, :, 0]
     # P = U[0, :, 3]
     # for j in range(ny):
-    #         rho = 0.01 + 0.008 * np.sin(0.02*i)
+    #         rho = 1 + 0.08 * np.sin(0.005*i)
     #         U[-5:, j, 0:4] = np.array([rho, rho * vx[j], rho * vy[j], P[j]])
     #         U[:5, j, 0:4] = np.array([rho, rho * vx[j], rho * vy[j], P[j]])
 

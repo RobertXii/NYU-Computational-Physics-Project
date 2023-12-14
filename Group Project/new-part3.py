@@ -10,7 +10,7 @@ for i in range(nt):
 
 def plot():
     for i in range(nt):
-        if i % 50 == 0:
+        if i % 25 == 0:
             plt.plot(range(hydro2.nx), np.load('data-part2/array'+str(i)+'.npy'))
             plt.title("Density Distribution at t=")
             # plt.xlabel('x-Position (arb. unit)')

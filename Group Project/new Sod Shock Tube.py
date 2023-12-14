@@ -5,7 +5,7 @@ import time
 
 # Record the start time
 start_time = time.time()
-nt = 1000
+nt = 1
 
 hydro.initialize()
 
@@ -20,9 +20,9 @@ def plot():
     for i in range(nt):
         if i % 50 == 0:
             plt.plot(range(hydro.nx), np.load('data/array'+str(i)+'.npy'))
-            plt.title("Density Distribution over time")
+            plt.title("Pressure Distribution over time")
             plt.xlabel('Position (arb. unit)')
-            plt.ylabel('Density (arb. unit)')
+            plt.ylabel('Pressure (arb. unit)')
 
 plot()
 
